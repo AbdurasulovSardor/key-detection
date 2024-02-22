@@ -3,13 +3,24 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="cornify.js"></script>
+    <script type="text/javascript" src="./cornify.js"></script>
     <title>Key Detection</title>
   </head>
   <body>
 
     <script>
+      const pressed = []
+      const secretCode = "wesbos"
 
+      window.addEventListener("keyup", (e) => {
+        pressed.push(e.key)
+        pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length)
+
+        if (pressed.join("").includes(secretCode)) {
+          cornify_add()
+        }
+        console.log(pressed);
+      })
     </script>
   </body>
 </html>
